@@ -1,0 +1,45 @@
+{
+  "name": "<lib_name>",
+  "version": "0.0.0",
+  "description": "<description>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "node scripts/test.mjs && npm run test:ts && npm run lint",
+    "test:ci": "node scripts/test.mjs && npm run test:ts && npm run lint:ci",
+    "test:only": "node scripts/test.mjs --only",
+    "test:ts": "tsd",
+    "lint": "eslint"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/metcoder95/<lib_name>.git"
+  },
+  "readme": "https://github.com/metcoder95/<lib_name>/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/metcoder95/<lib_name>/issues"
+  },
+  "author": "metcoder95 <me@metcoder.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "eslint": "^9.35.0",
+    "glob": "^11.0.3",
+    "neostandard": "^0.12.2",
+    "tsd": "^0.33.0",
+    "typescript": "^5.9.2"
+  },
+  "tsd": {
+    "directory": "test"
+  },
+  "tap": {
+    "check-coverage": false
+  },
+  "standard": {
+    "ignore": [
+      "*.d.ts",
+      "*.test-d.ts"
+    ]
+  }
+}
