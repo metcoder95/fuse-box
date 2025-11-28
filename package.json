@@ -4,6 +4,7 @@
   "description": "<description>",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "node scripts/test.mjs && npm run test:ts && npm run lint",
     "test:ci": "node scripts/test.mjs && npm run test:ts && npm run lint:ci",
@@ -23,12 +24,12 @@
   "author": "metcoder95 <me@metcoder.dev>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^24.3.1",
-    "eslint": "^9.35.0",
+    "@types/node": "^24.9.2",
+    "eslint": "^9.38.0",
     "glob": "^11.0.3",
     "neostandard": "^0.12.2",
     "tsd": "^0.33.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "tsd": {
     "directory": "test"
