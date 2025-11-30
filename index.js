@@ -117,15 +117,15 @@ const workload2 = async (a, b) => {
   return a * b
 }
 const protectedWorkload = fusebox
-  .addWorkflows(Fallback({ fallback: 42 }), Retry({ maxDelay: 3000 }))
+  .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 3000 }))
   .protect(workload)
 
 const protectedWorkload2 = fusebox.protect(workload2)
 
 protectedWorkload(2, 3)
-  .then(console.log, console.log)
+  .then(console.log, console.log) // 42
   .then(() => protectedWorkload2(2, 3))
-  .then(console.log, console.log)
+  .then(console.log, console.log) // 6
 
 // console.log(await protectedWorkload2(2, 3))
 // console.log(await protectedWorkload(2, 3))
