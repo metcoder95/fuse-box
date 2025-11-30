@@ -12,6 +12,7 @@ import { getPromiseResolvers } from './lib/utils.js'
 // Workflows
 import { Retry } from './lib/workflows/retry.js'
 import { Fallback } from './lib/workflows/fallback.js'
+import { CircuitBreaker } from './lib/workflows/circuitbreaker.js'
 
 class FuseBox extends Function {
   [kWorkflow] = null
@@ -37,7 +38,7 @@ class FuseBox extends Function {
 
       wrapper[kWorkflow](() => workload(...args), {
         onStart () {
-          // no-op
+          // no-op - yet
         },
         onComplete (result) {
           resolve(result)
@@ -117,15 +118,16 @@ const workload2 = async (a, b) => {
   return a * b
 }
 const protectedWorkload = fusebox
-  .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 3000 }))
+  // .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 3000 }))
+  .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 5000, delay: 1000, retries: 5 }), CircuitBreaker({ timeout: 100, attempts: 1 }))
   .protect(workload)
 
 const protectedWorkload2 = fusebox.protect(workload2)
 
 protectedWorkload(2, 3)
   .then(console.log, console.log) // 42
-  .then(() => protectedWorkload2(2, 3))
-  .then(console.log, console.log) // 6
+  // .then(() => protectedWorkload2(2, 3))
+  // .then(console.log, console.log) // 6
 
 // console.log(await protectedWorkload2(2, 3))
 // console.log(await protectedWorkload(2, 3))
