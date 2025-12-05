@@ -1,5 +1,5 @@
 {
-  "name": "<lib_name>",
+  "name": "fusebox",
   "version": "0.0.0",
   "description": "<description>",
   "main": "index.js",
