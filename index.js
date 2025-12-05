@@ -14,7 +14,13 @@ import { Retry } from './lib/workflows/retry.js'
 import { Fallback } from './lib/workflows/fallback.js'
 import { CircuitBreaker } from './lib/workflows/circuitbreaker.js'
 
-class FuseBox extends Function {
+export const Workflows = {
+  Retry,
+  Fallback,
+  CircuitBreaker
+}
+
+export class FuseBox extends Function {
   [kWorkflow] = null
 
   constructor () {
@@ -104,31 +110,9 @@ class FuseBox extends Function {
 
     return this
   }
+
+  static FuseBox = FuseBox
+  static Workflows = Workflows
 }
 
-const fusebox = new FuseBox()
-const workload = (a, b) => {
-  if (a + b > 4) {
-    throw new Error('Sum exceeds limit')
-  }
-
-  return a + b
-}
-const workload2 = async (a, b) => {
-  return a * b
-}
-const protectedWorkload = fusebox
-  // .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 3000 }))
-  .addWorkflows(Fallback({ value: 42 }), Retry({ maxDelay: 5000, delay: 1000, retries: 5 }), CircuitBreaker({ timeout: 100, attempts: 1 }))
-  .protect(workload)
-
-const protectedWorkload2 = fusebox.protect(workload2)
-
-protectedWorkload(2, 3)
-  .then(console.log, console.log) // 42
-  // .then(() => protectedWorkload2(2, 3))
-  // .then(console.log, console.log) // 6
-
-// console.log(await protectedWorkload2(2, 3))
-// console.log(await protectedWorkload(2, 3))
-// console.log(await protectedWorkload2(2, 3))
+export default FuseBox
