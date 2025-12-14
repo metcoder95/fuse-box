@@ -1,7 +1,7 @@
 {
   "name": "fusebox",
   "version": "0.0.0",
-  "description": "<description>",
+  "description": "Utilitary library for applying resiliency workflows to protect workloads",
   "main": "index.js",
   "types": "index.d.ts",
   "type": "module",
@@ -15,11 +15,11 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/metcoder95/<lib_name>.git"
+    "url": "git+https://github.com/metcoder95/fuse-box.git"
   },
-  "readme": "https://github.com/metcoder95/<lib_name>/blob/main/README.md",
+  "readme": "https://github.com/metcoder95/fuse-box/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/metcoder95/<lib_name>/issues"
+    "url": "https://github.com/metcoder95/fuse-box/issues"
   },
   "author": "metcoder95 <me@metcoder.dev>",
   "license": "MIT",
