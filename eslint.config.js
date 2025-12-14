@@ -1,8 +1,9 @@
 'use strict'
+import neostandard from 'neostandard'
 
-module.exports = require('neostandard')({
+export default neostandard({
   semi: false,
-  ts: false,
+  ts: true,
   ignores: ['node_modules'],
   globals: {
     SharedArrayBuffer: true,
