@@ -44,3 +44,13 @@ expectAssignable(Workflows.Fallback({ value: 42 }))
 expectAssignable(Workflows.Fallback({ value: () => 42 }))
 expectAssignable(Workflows.Fallback({ value: () => Promise.resolve(42) }))
 expectAssignable(Workflows.Fallback({ value: async () => 42 }))
+
+// Retry
+expectAssignable(Workflows.Retry({ maxDelay: 42, backoff: 1, retries: 1, delay: 1 }))
+expectAssignable(Workflows.Retry({ }))
+expectAssignable(Workflows.Retry())
+
+// Circuit Breaker
+expectAssignable(Workflows.CircuitBreaker({ attempts: 1, successAttempts: 1, timeout: 1 }))
+expectAssignable(Workflows.CircuitBreaker({ }))
+expectAssignable(Workflows.CircuitBreaker())
