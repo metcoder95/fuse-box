@@ -2,31 +2,31 @@
 
 export type FuseBoxWorkload<
   Workload extends (...args: any) => any = (...args: any) => any
-> = Workload & FuseBox
-export type FuseBoxAbortCallback = (reason: Error) => void
-export type FuseBoxWorkloadOnStart = (abort: FuseBoxAbortCallback) => void
+> = Workload & FuseBox;
+export type FuseBoxAbortCallback = (reason: Error) => void;
+export type FuseBoxWorkloadOnStart = (abort: FuseBoxAbortCallback) => void;
 export type FuxeBoxWorkloadOnComplete<Workload extends (...args: any) => any> =
-  (result: Awaited<ReturnType<Workload>>) => void
-export type FuxeBoxWorkloadOnError = (error: Error) => void
+  (result: Awaited<ReturnType<Workload>>) => void;
+export type FuxeBoxWorkloadOnError = (error: Error) => void;
 export type FuseBoxWorloadHandler<
   Workload extends FuseBoxWorkload = FuseBoxWorkload
 > = {
   onStart: FuseBoxWorkloadOnStart;
   onComplete: FuxeBoxWorkloadOnComplete<Workload>;
   onError: FuxeBoxWorkloadOnError;
-}
+};
 
 export type FuseBoxWorkflow = (
   workflow: FuseBoxWorkflow
-) => (workload: FuseBoxWorkload, handler: FuseBoxWorloadHandler) => void
+) => (workload: FuseBoxWorkload, handler: FuseBoxWorloadHandler) => void;
 
 export class FuseBox extends Function {
-  constructor ()
+  constructor();
   protect<Workload extends (...args: any) => any = (...args: any) => any>(
     workload: Workload
-  ): FuseBoxWorkload<Workload>
-  addWorkflows (workflows: FuseBoxWorkflow[]): FuseBoxWorkload
-  addWorkflows (...workflows: FuseBoxWorkflow[]): FuseBoxWorkload
+  ): FuseBoxWorkload<Workload>;
+  addWorkflows(workflows: FuseBoxWorkflow[]): FuseBoxWorkload;
+  addWorkflows(...workflows: FuseBoxWorkflow[]): FuseBoxWorkload;
 }
 
 // Workflows
@@ -34,7 +34,7 @@ export class FuseBox extends Function {
 export type FallbackWorkflowValue<Fallback> =
   | (() => Fallback)
   | (() => Promise<Fallback>)
-  | Fallback
+  | Fallback;
 export type FallbackWorkflowOptions<Fallback = unknown> = {
   /**
    * @description Fallback value to be used in case of a failure. Can be a function, a function that returns a promise
@@ -47,7 +47,7 @@ export type FallbackWorkflowOptions<Fallback = unknown> = {
    * @default false
    */
   handleAbort?: boolean;
-}
+};
 
 // Retry
 export type RetryWorkflowOptions = {
@@ -71,7 +71,7 @@ export type RetryWorkflowOptions = {
    * @default 10000
    */
   maxDelay?: number;
-}
+};
 
 // CircuitBreaker
 export type CircuitBreakerWorkflowOptions = {
@@ -90,16 +90,21 @@ export type CircuitBreakerWorkflowOptions = {
    * @default 1000
    */
   timeout?: number;
-}
+  /**
+   * @description Ratio sampling to aplying a custom discrete distribution. It should be between 0 and 1
+   * @default 1
+   */
+  weight?: number;
+};
 
 export namespace Workflows {
-  export function CircuitBreaker (
+  export function CircuitBreaker(
     opts?: CircuitBreakerWorkflowOptions
-  ): FuseBoxWorkflow
-  export function Retry (opts?: RetryWorkflowOptions): FuseBoxWorkflow
-  export function Fallback<Fallback = unknown> (
+  ): FuseBoxWorkflow;
+  export function Retry(opts?: RetryWorkflowOptions): FuseBoxWorkflow;
+  export function Fallback<Fallback = unknown>(
     opts: FallbackWorkflowOptions<Fallback>
-  ): FuseBoxWorkflow
+  ): FuseBoxWorkflow;
 }
 
-export default FuseBox
+export default FuseBox;
