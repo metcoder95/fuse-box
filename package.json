@@ -1,12 +1,13 @@
 {
-  "name": "<lib_name>",
+  "name": "fusebox",
   "version": "0.0.0",
-  "description": "<description>",
+  "description": "Utilitary library for applying resiliency workflows to protect workloads",
   "main": "index.js",
   "types": "index.d.ts",
+  "type": "module",
   "scripts": {
     "test": "node scripts/test.mjs && npm run test:ts && npm run lint",
-    "test:ci": "node scripts/test.mjs && npm run test:ts && npm run lint:ci",
+    "test:ci": "node scripts/test.mjs",
     "test:only": "node scripts/test.mjs --only",
     "test:ts": "tsd",
     "lint": "eslint"
@@ -14,21 +15,21 @@
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/metcoder95/<lib_name>.git"
+    "url": "git+https://github.com/metcoder95/fuse-box.git"
   },
-  "readme": "https://github.com/metcoder95/<lib_name>/blob/main/README.md",
+  "readme": "https://github.com/metcoder95/fuse-box/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/metcoder95/<lib_name>/issues"
+    "url": "https://github.com/metcoder95/fuse-box/issues"
   },
   "author": "metcoder95 <me@metcoder.dev>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^24.3.1",
-    "eslint": "^9.35.0",
+    "@types/node": "^24.9.2",
+    "eslint": "^9.38.0",
     "glob": "^11.0.3",
     "neostandard": "^0.12.2",
     "tsd": "^0.33.0",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "tsd": {
     "directory": "test"
