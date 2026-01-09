@@ -1,4 +1,4 @@
-# fusebox
+# `@metcoder95/fusebox`
 
 > Utilitary library for applying resiliency workflows to protect workloads.
 
@@ -7,7 +7,7 @@
 ## Installation
 
 ```bash
-npm install fusebox
+npm install @metcoder95/fusebox
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ The `FuseBox` class is the main entry point. Use it to compose workflows and wra
 ### Quick Start
 
 ```javascript
-import { FuseBox, Workflows } from 'fusebox';
+import { FuseBox, Workflows } from '@metcoder95/fusebox';
 
 const fusebox = new FuseBox();
 
