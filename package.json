@@ -1,5 +1,5 @@
 {
-  "name": "fusebox",
+  "name": "@metcoder95/fusebox",
   "version": "0.1.0",
   "description": "Utilitary library for applying resiliency workflows to protect workloads",
   "main": "index.js",
