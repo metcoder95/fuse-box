@@ -1,6 +1,6 @@
 {
   "name": "fusebox",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Utilitary library for applying resiliency workflows to protect workloads",
   "main": "index.js",
   "types": "index.d.ts",
