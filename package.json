@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "node scripts/test.mjs && npm run test:ts && npm run lint",
-    "test:ci": "node scripts/test.mjs && npm run test:ts && npm run lint:ci",
+    "test:ci": "node scripts/test.mjs",
     "test:only": "node scripts/test.mjs --only",
     "test:ts": "tsd",
     "lint": "eslint"

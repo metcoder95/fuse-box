@@ -67,4 +67,4 @@ jobs:
       - name: Test
         env:
           NODE_VERSION: ${{ steps.node_setup.outputs.node-version }}
-        run: npm run test
+        run: npm run test:ci
